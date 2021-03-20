@@ -4,6 +4,7 @@ import com.divisionism.moores.OreAddons;
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
 import com.divisionism.moores.enums.itemtiers.ModItemTiers;
 import com.divisionism.moores.enums.materials.ModArmorMaterials;
+import com.divisionism.moores.objects.items.CoalPowderItem;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -34,7 +35,7 @@ public class ModItems {
 	public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> COAL_POWDER = ITEMS.register("coal_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new CoalPowderItem(new Item.Properties().group(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> STEEL_DUST = ITEMS.register("steel_dust",
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> STEEL_POWDER = ITEMS.register("steel_powder",
@@ -82,6 +83,18 @@ public class ModItems {
 					new Item.Properties().group(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> STEEL_BOOTS = ITEMS.register("steel_boots",
 			() -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlotType.FEET,
+					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<ArmorItem> BRONZE_HELMET = ITEMS.register("bronze_helmet",
+			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.HEAD,
+					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<ArmorItem> BRONZE_CHESTPLATE = ITEMS.register("bronze_chestplate",
+			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.CHEST,
+					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<ArmorItem> BRONZE_LEGGINGS = ITEMS.register("bronze_leggings",
+			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.LEGS,
+					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<ArmorItem> BRONZE_BOOTS = ITEMS.register("bronze_boots",
+			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.FEET,
 					new Item.Properties().group(ModCreativeTabs.TOOLS)));
 
 	// Register block-items

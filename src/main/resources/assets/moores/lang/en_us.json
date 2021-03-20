@@ -26,6 +26,10 @@
 	"item.moores.bronze_axe": "Bronze Axe",
 	"item.moores.bronze_shovel": "Bronze Shovel",
 	"item.moores.bronze_hoe": "Bronze Hoe",
+	"item.moores.bronze_helmet": "Bronze Helmet",
+	"item.moores.bronze_chestplate": "Bronze Chestplate",
+	"item.moores.bronze_leggings": "Bronze Leggings",
+	"item.moores.bronze_boots": "Bronze Boots",
 	
 	"block.moores.copper_ore": "Copper Ore",
 	"block.moores.tin_ore": "Cassiterite",

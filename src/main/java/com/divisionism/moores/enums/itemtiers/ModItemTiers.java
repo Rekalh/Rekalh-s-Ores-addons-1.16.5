@@ -6,7 +6,7 @@ import net.minecraft.item.IItemTier;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum ModItemTiers implements IItemTier {
-	BRONZE(2000, 10, 2, 5, 15, Ingredient.fromItems(ModItems.COPPER_INGOT.get())),
+	BRONZE(2000, 10, 5, 5, 15, Ingredient.fromItems(ModItems.COPPER_INGOT.get())),
 	STEEL(1000, 7, 5, 4, 10, Ingredient.fromItems(ModItems.STEEL_INGOT.get()));
 
 	private int durability;
