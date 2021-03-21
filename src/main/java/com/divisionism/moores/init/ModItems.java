@@ -13,6 +13,7 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.HoeItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.PickaxeItem;
+import net.minecraft.item.Rarity;
 import net.minecraft.item.ShovelItem;
 import net.minecraft.item.SwordItem;
 import net.minecraftforge.fml.RegistryObject;
@@ -98,6 +99,11 @@ public class ModItems {
 					new Item.Properties().group(ModCreativeTabs.TOOLS)));
 
 	// Register block-items
+	public static final RegistryObject<BlockItem> CRYSTAL_MEF_ITEM = ITEMS.register("crystal_mef",
+			() -> new BlockItem(ModBlocks.CRYSTAL_MEF.get(), new Item.Properties().rarity(Rarity.EPIC)));
+	public static final RegistryObject<BlockItem> YES_BLOCK_ITEM = ITEMS.register("yes_block",
+			() -> new BlockItem(ModBlocks.YES_BLOCK.get(), new Item.Properties().rarity(Rarity.EPIC)));
+
 	public static final RegistryObject<BlockItem> COPPER_ORE_ITEM = ITEMS.register("copper_ore",
 			() -> new BlockItem(ModBlocks.COPPER_ORE.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
 	public static final RegistryObject<BlockItem> TIN_ORE_ITEM = ITEMS.register("tin_ore",

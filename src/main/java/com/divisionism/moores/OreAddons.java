@@ -6,7 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
 import com.divisionism.moores.init.ModBlocks;
 import com.divisionism.moores.init.ModItems;
-import com.divisionism.moores.world.ModOreGeneration;
+import com.divisionism.moores.world.gen.ModOreGeneration;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
