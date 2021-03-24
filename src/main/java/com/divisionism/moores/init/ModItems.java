@@ -103,6 +103,8 @@ public class ModItems {
 			() -> new BlockItem(ModBlocks.CRYSTAL_MEF.get(), new Item.Properties().rarity(Rarity.EPIC)));
 	public static final RegistryObject<BlockItem> YES_BLOCK_ITEM = ITEMS.register("yes_block",
 			() -> new BlockItem(ModBlocks.YES_BLOCK.get(), new Item.Properties().rarity(Rarity.EPIC)));
+	public static final RegistryObject<BlockItem> PARTICLE_BLOCK_ITEM = ITEMS.register("particle_block",
+			() -> new BlockItem(ModBlocks.PARTICLE_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
 
 	public static final RegistryObject<BlockItem> COPPER_ORE_ITEM = ITEMS.register("copper_ore",
 			() -> new BlockItem(ModBlocks.COPPER_ORE.get(), new Item.Properties().group(ModCreativeTabs.ORES)));

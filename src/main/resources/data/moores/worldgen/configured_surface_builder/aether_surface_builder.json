@@ -1,0 +1,14 @@
+{
+  "config": {
+    "top_material": {
+      "Name": "moores:yes_block"
+    },
+    "under_material": {
+      "Name": "minecraft:dirt"
+    },
+    "underwater_material": {
+      "Name": "moores:crystal_mef"
+    }
+  },
+  "type": "moores:aether_surface_builder"
+}

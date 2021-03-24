@@ -1,5 +1,6 @@
 package com.divisionism.moores.world.gen;
 
+import com.divisionism.moores.init.ModBiomes;
 import com.divisionism.moores.init.ModBlocks;
 
 import net.minecraft.block.BlockState;
@@ -11,6 +12,7 @@ import net.minecraft.world.gen.feature.template.BlockMatchRuleTest;
 import net.minecraft.world.gen.feature.template.RuleTest;
 import net.minecraft.world.gen.placement.Placement;
 import net.minecraft.world.gen.placement.TopSolidRangeConfig;
+import net.minecraftforge.common.BiomeManager;
 import net.minecraftforge.common.world.BiomeGenerationSettingsBuilder;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
 
@@ -19,6 +21,12 @@ public class ModOreGeneration {
 	public static final RuleTest END_STONE = new BlockMatchRuleTest(Blocks.END_STONE);
 
 	public static void generateOres(final BiomeLoadingEvent event) {
+
+		if (event.getName() == ModBiomes.AETHER_MOUNTAINS.get().getRegistryName()) {
+			BiomeManager.addBiome(BiomeManager.BiomeType.COOL,
+					new BiomeManager.BiomeEntry(ModBiomes.AETHER_MOUNTAINS_KEY, 1));
+		}
+
 		addOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
 				ModBlocks.COPPER_ORE.get().getDefaultState(), 10, 10, 30, 3);
 		addOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,

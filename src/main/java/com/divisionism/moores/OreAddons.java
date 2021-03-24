@@ -4,6 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
+import com.divisionism.moores.init.ModBiomes;
 import com.divisionism.moores.init.ModBlocks;
 import com.divisionism.moores.init.ModItems;
 import com.divisionism.moores.world.gen.ModOreGeneration;
@@ -28,6 +29,7 @@ public class OreAddons {
 
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
         
         new ModCreativeTabs();
         

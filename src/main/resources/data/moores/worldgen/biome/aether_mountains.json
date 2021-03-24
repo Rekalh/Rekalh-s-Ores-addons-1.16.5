@@ -1,0 +1,18 @@
+{ 
+  "depth": -1.0,
+  "scale": 5.0,
+  "precipitation": "none",
+  "category": "none",
+  "temperature": 1,
+  "temperature_modifier": "none",
+  "downfall": 0.5,
+  "player_spawn_friendly": true,
+  "creature_spawn_probability": 0,
+  "effects": {
+    "fog_color": 32714,
+    "grass_color": 14079702,
+    "sky_color": 14079743,
+    "water_color": 6517503
+  },
+  "surface_builder": "moores:aether_surface_builder"
+}
