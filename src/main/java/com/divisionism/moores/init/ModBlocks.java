@@ -1,6 +1,7 @@
 package com.divisionism.moores.init;
 
 import com.divisionism.moores.OreAddons;
+import com.divisionism.moores.objects.blocks.ContainerBlock;
 import com.divisionism.moores.objects.blocks.ParticleBlock;
 
 import net.minecraft.block.AbstractBlock;
@@ -27,6 +28,8 @@ public class ModBlocks {
 	public static final RegistryObject<Block> PARTICLE_BLOCK = BLOCKS.register("particle_block",
 			() -> new ParticleBlock(AbstractBlock.Properties.create(Material.ORGANIC).harvestTool(ToolType.PICKAXE)
 					.hardnessAndResistance(20f)));
+	public static final RegistryObject<Block> CONTAINER_BLOCK = BLOCKS.register("container_block",
+			() -> new ContainerBlock(AbstractBlock.Properties.from(Blocks.STONE)));
 
 	public static final RegistryObject<Block> COPPER_ORE = BLOCKS.register("copper_ore",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_ORE)));

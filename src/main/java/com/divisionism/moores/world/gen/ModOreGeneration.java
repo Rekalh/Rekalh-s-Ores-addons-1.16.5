@@ -19,6 +19,7 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 public class ModOreGeneration {
 
 	public static final RuleTest END_STONE = new BlockMatchRuleTest(Blocks.END_STONE);
+	public static final RuleTest BLACKSTONE = new BlockMatchRuleTest(Blocks.BLACKSTONE);
 
 	public static void generateOres(final BiomeLoadingEvent event) {
 
