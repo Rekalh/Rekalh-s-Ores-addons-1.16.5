@@ -4,7 +4,12 @@ import com.divisionism.moores.OreAddons;
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
 import com.divisionism.moores.enums.itemtiers.ModItemTiers;
 import com.divisionism.moores.enums.materials.ModArmorMaterials;
+import com.divisionism.moores.objects.items.BlazingBlackstoneBlockItem;
 import com.divisionism.moores.objects.items.CoalPowderItem;
+import com.divisionism.moores.objects.items.MagmatiteBootsItem;
+import com.divisionism.moores.objects.items.MagmatiteChestplateItem;
+import com.divisionism.moores.objects.items.MagmatiteHelmetItem;
+import com.divisionism.moores.objects.items.MagmatiteLeggingsItem;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -49,6 +54,12 @@ public class ModItems {
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> BRONZE_POWDER = ITEMS.register("bronze_powder",
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> MAGMATITE = ITEMS.register("magmatite",
+			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
+	public static final RegistryObject<Item> MAGMATITE_FRAGMENT = ITEMS.register("magmatite_fragment",
+			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
+	public static final RegistryObject<Item> DEPLETED_MAGMATITE = ITEMS.register("depleted_magmatite",
+			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
 
 	// Tools
 	public static final RegistryObject<PickaxeItem> STEEL_PICKAXE = ITEMS.register("steel_pickaxe",
@@ -97,16 +108,24 @@ public class ModItems {
 	public static final RegistryObject<ArmorItem> BRONZE_BOOTS = ITEMS.register("bronze_boots",
 			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.FEET,
 					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<MagmatiteHelmetItem> MAGMATITE_HELMET = ITEMS.register("magmatite_helmet",
+			() -> new MagmatiteHelmetItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.HEAD,
+					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+	public static final RegistryObject<MagmatiteChestplateItem> MAGMATITE_CHESTPLATE = ITEMS
+			.register("magmatite_chestplate", () -> new MagmatiteChestplateItem(ModArmorMaterials.MAGMATITE,
+					EquipmentSlotType.CHEST, new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+	public static final RegistryObject<MagmatiteLeggingsItem> MAGMATITE_LEGGINGS = ITEMS.register("magmatite_leggings",
+			() -> new MagmatiteLeggingsItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.LEGS,
+					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+	public static final RegistryObject<MagmatiteBootsItem> MAGMATITE_BOOTS = ITEMS.register("magmatite_boots",
+			() -> new MagmatiteBootsItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.FEET,
+					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
 
 	// Register block-items
 	public static final RegistryObject<BlockItem> CRYSTAL_MEF_ITEM = ITEMS.register("crystal_mef",
 			() -> new BlockItem(ModBlocks.CRYSTAL_MEF.get(), new Item.Properties().rarity(Rarity.EPIC)));
 	public static final RegistryObject<BlockItem> YES_BLOCK_ITEM = ITEMS.register("yes_block",
 			() -> new BlockItem(ModBlocks.YES_BLOCK.get(), new Item.Properties().rarity(Rarity.EPIC)));
-	public static final RegistryObject<BlockItem> PARTICLE_BLOCK_ITEM = ITEMS.register("particle_block",
-			() -> new BlockItem(ModBlocks.PARTICLE_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
-	public static final RegistryObject<BlockItem> CONTAINER_BLOCK_ITEM = ITEMS.register("container_block",
-			() -> new BlockItem(ModBlocks.CONTAINER_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
 
 	public static final RegistryObject<BlockItem> COPPER_ORE_ITEM = ITEMS.register("copper_ore",
 			() -> new BlockItem(ModBlocks.COPPER_ORE.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
@@ -120,4 +139,7 @@ public class ModItems {
 			() -> new BlockItem(ModBlocks.TIN_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
 	public static final RegistryObject<BlockItem> BRONZE_BLOCK_ITEM = ITEMS.register("bronze_block",
 			() -> new BlockItem(ModBlocks.BRONZE_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> BLAZING_BLACKSTONE_ITEM = ITEMS.register("blazing_blackstone",
+			() -> new BlazingBlackstoneBlockItem(ModBlocks.BLAZING_BLACKSTONE.get(),
+					new Item.Properties().group(ModCreativeTabs.ORES)));
 }

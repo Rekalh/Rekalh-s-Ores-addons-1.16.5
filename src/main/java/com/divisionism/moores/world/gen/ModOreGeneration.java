@@ -32,9 +32,8 @@ public class ModOreGeneration {
 				ModBlocks.COPPER_ORE.get().getDefaultState(), 10, 10, 30, 3);
 		addOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_OVERWORLD,
 				ModBlocks.TIN_ORE.get().getDefaultState(), 6, 5, 50, 4);
-		addOre(event.getGeneration(), OreFeatureConfig.FillerBlockType.BASE_STONE_NETHER,
-				Blocks.DIAMOND_BLOCK.getDefaultState(), 10, 0, 100, 10);
-		addOre(event.getGeneration(), END_STONE, Blocks.DIAMOND_BLOCK.getDefaultState(), 10, 0, 100, 10);
+		addOre(event.getGeneration(), BLACKSTONE, ModBlocks.BLAZING_BLACKSTONE.get().getDefaultState(), 20, 0, 100, 10);
+		//addOre(event.getGeneration(), END_STONE, Blocks.DIAMOND_BLOCK.getDefaultState(), 10, 0, 100, 10);
 	}
 
 	private static void addOre(BiomeGenerationSettingsBuilder settings, RuleTest fillerType, BlockState state,

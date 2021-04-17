@@ -1,8 +1,7 @@
 package com.divisionism.moores.init;
 
 import com.divisionism.moores.OreAddons;
-import com.divisionism.moores.objects.blocks.ContainerBlock;
-import com.divisionism.moores.objects.blocks.ParticleBlock;
+import com.divisionism.moores.objects.blocks.BlazingBlackstone;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -25,11 +24,6 @@ public class ModBlocks {
 	public static final RegistryObject<Block> YES_BLOCK = BLOCKS.register("yes_block",
 			() -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)
 					.harvestLevel(4).jumpFactor(1f).slipperiness(0.5f).variableOpacity()));
-	public static final RegistryObject<Block> PARTICLE_BLOCK = BLOCKS.register("particle_block",
-			() -> new ParticleBlock(AbstractBlock.Properties.create(Material.ORGANIC).harvestTool(ToolType.PICKAXE)
-					.hardnessAndResistance(20f)));
-	public static final RegistryObject<Block> CONTAINER_BLOCK = BLOCKS.register("container_block",
-			() -> new ContainerBlock(AbstractBlock.Properties.from(Blocks.STONE)));
 
 	public static final RegistryObject<Block> COPPER_ORE = BLOCKS.register("copper_ore",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_ORE)));
@@ -43,4 +37,7 @@ public class ModBlocks {
 			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
 	public static final RegistryObject<Block> BRONZE_BLOCK = BLOCKS.register("bronze_block",
 			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
+	public static final RegistryObject<Block> BLAZING_BLACKSTONE = BLOCKS.register("blazing_blackstone",
+			() -> new BlazingBlackstone(AbstractBlock.Properties.create(Material.ORGANIC).harvestTool(ToolType.PICKAXE)
+					.hardnessAndResistance(20f).setLightLevel((state) -> {return 10;})));
 }

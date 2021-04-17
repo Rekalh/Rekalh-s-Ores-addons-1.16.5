@@ -8,5 +8,4 @@ import net.minecraftforge.fml.common.Mod.EventBusSubscriber.Bus;
 
 @Mod.EventBusSubscriber(modid = OreAddons.MOD_ID, value = Dist.CLIENT, bus = Bus.MOD)
 public class ModClientEventSubscriber {
-
 }

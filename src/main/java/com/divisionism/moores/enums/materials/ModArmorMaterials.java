@@ -15,7 +15,9 @@ public enum ModArmorMaterials implements IArmorMaterial {
 	STEEL(OreAddons.MOD_ID + ":steel", 1000, new int[] { 2, 7, 6, 3 }, 0.0f, 0.005f, 15,
 			Ingredient.fromItems(ModItems.STEEL_INGOT.get()), SoundEvents.ITEM_ARMOR_EQUIP_IRON),
 	BRONZE(OreAddons.MOD_ID + ":bronze", 2500, new int[] { 3, 7, 7, 4 }, 0.0f, 0.01f, 15,
-			Ingredient.fromItems(Items.IRON_INGOT), SoundEvents.ITEM_ARMOR_EQUIP_IRON);
+			Ingredient.fromItems(Items.IRON_INGOT), SoundEvents.ITEM_ARMOR_EQUIP_IRON),
+	MAGMATITE(OreAddons.MOD_ID + ":magmatite", 1600, new int[] { 3, 7, 6, 4 }, 0.0f, 0.06f, 17, Ingredient.EMPTY,
+			SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
 
 	private String name;
 	private int durability;
