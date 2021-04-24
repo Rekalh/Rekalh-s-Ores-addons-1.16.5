@@ -3,7 +3,6 @@ package com.divisionism.moores.objects.items;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.divisionism.moores.OreAddons;
 import com.divisionism.moores.init.ModItems;
 
 import net.minecraft.client.util.ITooltipFlag;
@@ -64,9 +63,7 @@ public class MagmatiteChestplateItem extends ArmorItem {
 				&& this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_LEGGINGS.get())
 				&& this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_BOOTS.get())) {
 			player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 10, 0, true, false));
-			OreAddons.LOGGER.info("Hello");
 		}
-		OreAddons.LOGGER.info(this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_BOOTS.get()));
 	}
 
 	private ArrayList<Item> getArmorWearing(PlayerInventory inv, int armorSlot) {

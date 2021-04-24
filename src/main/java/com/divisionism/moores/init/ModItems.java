@@ -61,6 +61,10 @@ public class ModItems {
 	public static final RegistryObject<Item> DEPLETED_MAGMATITE = ITEMS.register("depleted_magmatite",
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
 
+	public static final RegistryObject<SwordItem> THE_BIBLE = ITEMS.register("the_bible",
+			() -> new SwordItem(ModItemTiers.THE_BIBLE, 32767, 5,
+					new Item.Properties().isImmuneToFire().maxStackSize(1).rarity(Rarity.EPIC)));
+
 	// Tools
 	public static final RegistryObject<PickaxeItem> STEEL_PICKAXE = ITEMS.register("steel_pickaxe",
 			() -> new PickaxeItem(ModItemTiers.STEEL, 1, -2.8f, new Item.Properties().group(ModCreativeTabs.TOOLS)));

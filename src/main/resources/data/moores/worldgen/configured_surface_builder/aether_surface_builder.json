@@ -10,5 +10,5 @@
       "Name": "moores:crystal_mef"
     }
   },
-  "type": "moores:aether_surface_builder"
+  "type": "default"
 }
