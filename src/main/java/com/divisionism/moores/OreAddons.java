@@ -30,6 +30,7 @@ public class OreAddons {
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBiomes.SURFACE_BUILDERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         
         new ModCreativeTabs();
         

@@ -3,11 +3,13 @@ package com.divisionism.moores.enums.itemtiers;
 import com.divisionism.moores.init.ModItems;
 
 import net.minecraft.item.IItemTier;
+import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum ModItemTiers implements IItemTier {
 	BRONZE(2000, 10, 5, 5, 15, Ingredient.fromItems(ModItems.COPPER_INGOT.get())),
-	STEEL(1000, 7, 5, 4, 10, Ingredient.fromItems(ModItems.STEEL_INGOT.get()));
+	STEEL(1000, 7, 5, 4, 10, Ingredient.fromItems(ModItems.STEEL_INGOT.get())),
+	THE_BIBLE(999999, 100, 1000, 10, 20, Ingredient.fromItems(Items.PAPER));
 
 	private int durability;
 	private int efficiency;
