@@ -1,8 +1,8 @@
 { 
-  "depth": -1.0,
+  "depth": 1.0,
   "scale": 5.0,
   "precipitation": "none",
-  "category": "none",
+  "category": "plains",
   "temperature": 1,
   "temperature_modifier": "none",
   "downfall": 0.5,

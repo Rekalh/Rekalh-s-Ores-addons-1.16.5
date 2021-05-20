@@ -35,7 +35,7 @@ public class ModOreGeneration {
 
 	public static void generateOres(final BiomeLoadingEvent event) {
 
-		if (event.getName() == ModBiomes.AETHER_MOUNTAINS.get().getRegistryName()) {
+		if (event.getName().equals(ModBiomes.AETHER_MOUNTAINS.get().getRegistryName())) {
 			BiomeManager.addBiome(BiomeManager.BiomeType.COOL,
 					new BiomeManager.BiomeEntry(ModBiomes.AETHER_MOUNTAINS_KEY, 1));
 		}
@@ -58,6 +58,9 @@ public class ModOreGeneration {
 		 */
 		addOreToSurface(event.getGeneration(), new SimpleBlockStateProvider(Blocks.DIAMOND_BLOCK.getDefaultState()),
 				whitelist, blacklist, 1, new Vector3i(10, 10, 10));
+		addOre(event.getGeneration(), BLACKSTONE, ModBlocks.BLAZING_BLACKSTONE.get().getDefaultState(), 20, 0, 100, 5);
+		// addOre(event.getGeneration(), END_STONE,
+		// Blocks.DIAMOND_BLOCK.getDefaultState(), 10, 0, 100, 10);
 	}
 
 	private static void addOre(BiomeGenerationSettingsBuilder settings, RuleTest fillerType, BlockState state,
