@@ -8,9 +8,6 @@ import com.divisionism.moores.init.ModItems;
 import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.Enchantments;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.text.StringTextComponent;
@@ -28,13 +25,6 @@ public class ForgeClientEventSubscriber {
 	public static final UUID REKALH = UUID.fromString("b0374e3b-88d6-4843-9906-ea49dc2a59b5");
 	public static final UUID NICKMANEA = UUID.fromString("c4761e89-7416-47c5-aa69-59740f5e5eff");
 
-	@SubscribeEvent
-	public static void onPlayerJoin(PlayerLoggedInEvent event) {
-		PlayerEntity player = event.getPlayer();
-		if (player.getUniqueID().equals(REKALH))
-			player.addItemStackToInventory(new ItemStack(ModItems.MAGMATITE.get(), 64));
-		if (player.getUniqueID().equals(NICKMANEA)) {
-	
 	@SubscribeEvent
 	public static void onPlayerJoin(PlayerLoggedInEvent event) {
 		PlayerEntity player = event.getPlayer(); 
@@ -62,14 +52,6 @@ public class ForgeClientEventSubscriber {
 					player.setMotion(player.getMotion().x * amplifier, player.getMotion().y + 0.02,
 							player.getMotion().z * amplifier);
 				}
-	
-	@SubscribeEvent
-	public static void playerTickEvent(PlayerTickEvent event) {
-		PlayerEntity player = event.player;
-		if (player.getHeldItemMainhand().isItemEqual(ModItems.BRONZE_AXE.get().getDefaultInstance())) {
-			if (player.world.getFluidState(player.getPosition().add(0, -1, 0)).isSource()
-					|| player.world.getFluidState(player.getPosition()).isSource()) {
-				player.setMotion(player.getMotion().x * 1.05, player.getMotion().y + 0.02, player.getMotion().z * 1.05);
 			}
 		}
 	}
