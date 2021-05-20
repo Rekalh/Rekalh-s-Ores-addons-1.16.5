@@ -2,6 +2,7 @@ package com.divisionism.moores.init;
 
 import com.divisionism.moores.OreAddons;
 import com.divisionism.moores.objects.blocks.BlazingBlackstone;
+import com.divisionism.moores.objects.blocks.CrystalMef;
 
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
@@ -19,7 +20,7 @@ public class ModBlocks {
 
 	// Register blocks
 	public static final RegistryObject<Block> CRYSTAL_MEF = BLOCKS.register("crystal_mef",
-			() -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)
+			() -> new CrystalMef(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)
 					.harvestLevel(4).jumpFactor(1f).slipperiness(0.5f).variableOpacity()));
 	public static final RegistryObject<Block> YES_BLOCK = BLOCKS.register("yes_block",
 			() -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)

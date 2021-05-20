@@ -4,6 +4,7 @@ import com.divisionism.moores.OreAddons;
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
 import com.divisionism.moores.enums.itemtiers.ModItemTiers;
 import com.divisionism.moores.enums.materials.ModArmorMaterials;
+import com.divisionism.moores.objects.items.AetherBootsItem;
 import com.divisionism.moores.objects.items.BlazingBlackstoneBlockItem;
 import com.divisionism.moores.objects.items.CoalPowderItem;
 import com.divisionism.moores.objects.items.MagmatiteBootsItem;
@@ -60,6 +61,8 @@ public class ModItems {
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
 	public static final RegistryObject<Item> DEPLETED_MAGMATITE = ITEMS.register("depleted_magmatite",
 			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
+	public static final RegistryObject<Item> AETHER_CRYSTAL = ITEMS.register("aether_crystal",
+			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
 
 	// Tools
 	public static final RegistryObject<PickaxeItem> STEEL_PICKAXE = ITEMS.register("steel_pickaxe",
@@ -120,6 +123,9 @@ public class ModItems {
 	public static final RegistryObject<MagmatiteBootsItem> MAGMATITE_BOOTS = ITEMS.register("magmatite_boots",
 			() -> new MagmatiteBootsItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.FEET,
 					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+	public static final RegistryObject<AetherBootsItem> AETHER_BOOTS = ITEMS.register("aether_boots",
+			() -> new AetherBootsItem(ModArmorMaterials.AETHER, EquipmentSlotType.FEET,
+					new Item.Properties().group(ModCreativeTabs.TOOLS)));
 
 	// Register block-items
 	public static final RegistryObject<BlockItem> CRYSTAL_MEF_ITEM = ITEMS.register("crystal_mef",

@@ -5,8 +5,8 @@ import com.divisionism.moores.init.ModItems;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.IArmorMaterial;
-import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.Items;
+import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.SoundEvents;
 
@@ -17,7 +17,9 @@ public enum ModArmorMaterials implements IArmorMaterial {
 	BRONZE(OreAddons.MOD_ID + ":bronze", 2500, new int[] { 3, 7, 7, 4 }, 0.0f, 0.01f, 15,
 			Ingredient.fromItems(Items.IRON_INGOT), SoundEvents.ITEM_ARMOR_EQUIP_IRON),
 	MAGMATITE(OreAddons.MOD_ID + ":magmatite", 1600, new int[] { 3, 7, 6, 4 }, 0.0f, 0.06f, 17, Ingredient.EMPTY,
-			SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE);
+			SoundEvents.ITEM_ARMOR_EQUIP_NETHERITE),
+	AETHER(OreAddons.MOD_ID + ":aether", 700, new int[] { 0, 0, 0, 3 }, 0.0f, 0.0f, 15,
+			Ingredient.fromItems(ModItems.AETHER_CRYSTAL.get()), SoundEvents.ITEM_ARMOR_EQUIP_GOLD);
 
 	private String name;
 	private int durability;
