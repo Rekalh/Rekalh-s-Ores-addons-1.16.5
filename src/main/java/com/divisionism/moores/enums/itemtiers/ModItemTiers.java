@@ -7,9 +7,10 @@ import net.minecraft.item.Items;
 import net.minecraft.item.crafting.Ingredient;
 
 public enum ModItemTiers implements IItemTier {
-	BRONZE(2000, 10, 5, 5, 15, Ingredient.fromItems(ModItems.COPPER_INGOT.get())),
-	STEEL(1000, 7, 5, 4, 10, Ingredient.fromItems(ModItems.STEEL_INGOT.get())),
-	THE_BIBLE(999999, 100, 1000, 10, 20, Ingredient.fromItems(Items.PAPER));
+	BRONZE(2000, 10, 5, 5, 15, Ingredient.of(ModItems.COPPER_INGOT.get())),
+	STEEL(1000, 7, 5, 4, 10, Ingredient.of(ModItems.STEEL_INGOT.get())),
+	YTTRIUM(600, 6, 3, 4, 10, Ingredient.of(Items.IRON_INGOT)),
+	THE_BIBLE(999999, 100, 1000, 10, 20, Ingredient.of(Items.PAPER));
 
 	private int durability;
 	private int efficiency;
@@ -29,32 +30,32 @@ public enum ModItemTiers implements IItemTier {
 	}
 
 	@Override
-	public int getMaxUses() {
+	public int getUses() {
 		return this.durability;
 	}
 
 	@Override
-	public float getEfficiency() {
+	public float getSpeed() {
 		return this.efficiency;
 	}
 
 	@Override
-	public float getAttackDamage() {
+	public float getAttackDamageBonus() {
 		return this.damage;
 	}
 
 	@Override
-	public int getHarvestLevel() {
+	public int getLevel() {
 		return this.harvestLevel;
 	}
 
 	@Override
-	public int getEnchantability() {
+	public int getEnchantmentValue() {
 		return this.enchantability;
 	}
 
 	@Override
-	public Ingredient getRepairMaterial() {
+	public Ingredient getRepairIngredient() {
 		return this.repairMaterial;
 	}
 }

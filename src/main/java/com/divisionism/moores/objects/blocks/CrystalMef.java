@@ -37,44 +37,41 @@ public class CrystalMef extends Block {
 	}
 
 	@Override
-	public ActionResultType onBlockActivated(BlockState blockState, World worldIn, BlockPos pos, PlayerEntity player,
+	public ActionResultType use(BlockState blockState, World worldIn, BlockPos pos, PlayerEntity player,
 			Hand handIn, BlockRayTraceResult hit) {
 
-		if (!worldIn.isRemote)
-			state++;
-		switch (this.state) {
-		case 0:
-			if (!worldIn.isRemote)
-				player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "gato ton"), player.getUniqueID());
-			break;
-		case 1:
-			if (!worldIn.isRemote)
-				player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "estas bien?"),
-						player.getUniqueID());
-			break;
-		case 2:
-			if (!worldIn.isRemote)
-				player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "colapso."), player.getUniqueID());
-			break;
-		case 3:
-			if (!worldIn.isRemote)
-				player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "coronavirus"),
-						player.getUniqueID());
-			break;
-		case 4:
-			if (!worldIn.isRemote)
-				player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "abueno adios master"),
-						player.getUniqueID());
-			break;
-		case 5:
-			if (!worldIn.isRemote) {
-				worldIn.createExplosion(player, pos.getX(), pos.getY() - 1, pos.getZ(), 15f, Explosion.Mode.DESTROY);
-				worldIn.destroyBlock(pos, false);
+		if (!worldIn.isClientSide()) {
+				state++;
+			switch (this.state) {
+				case 0:
+					player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "gato ton"), player.getUUID());
+					break;
+				case 1:
+					player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "estas bien?"),
+							player.getUUID());
+					break;
+				case 2:
+					player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "colapso."), player.getUUID());
+					break;
+				case 3:
+					player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "coronavirus"),
+							player.getUUID());
+					break;
+				case 4:
+					player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "abueno adios master"),
+							player.getUUID());
+					try {
+						Thread.sleep(500);
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+					worldIn.explode(null, pos.getX(), pos.getY() - 1, pos.getZ(), 15f, Explosion.Mode.DESTROY);
+					worldIn.destroyBlock(pos, false);
+					state = -1;
+					break;
 			}
-			state = -1;
-			break;
+			this.write(nbt);
 		}
-		this.write(nbt);
 		return ActionResultType.SUCCESS;
 	}
 

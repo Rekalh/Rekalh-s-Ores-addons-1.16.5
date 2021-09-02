@@ -18,6 +18,6 @@ public class BlazingBlackstoneBlockItem extends BlockItem {
 		if (!(entityIn instanceof PlayerEntity))
 			return;
 		PlayerEntity player = (PlayerEntity)entityIn;
-		if (!player.isCreative()) player.setFire(1);
+		if (!player.isCreative()) player.setSecondsOnFire(1);
 	}
 }

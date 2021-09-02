@@ -15,6 +15,7 @@
 	"item.moores.magmatite_fragment":"Magmatite Fragment",
 	"item.moores.depleted_magmatite": "Depleted Magmatite",
 	"item.moores.aether_crystal": "Aether Crystal",
+	"item.moores.aether_shard": "Aether Shard",
 	
 	"item.moores.steel_sword": "Steel Sword",
 	"item.moores.steel_pickaxe": "Steel Pickaxe",
@@ -38,6 +39,8 @@
 	"item.moores.magmatite_chestplate": "Magmatite Chestplate",
 	"item.moores.magmatite_leggings": "Magmatite Leggings",
 	"item.moores.magmatite_boots": "Magmatite Boots",
+	"item.moores.aether_boots": "Aether Boots",
+	"item.moores.yttrium_pickaxe": "Yttrium-coated pickaxe",
 	
 	"block.moores.copper_ore": "Copper Ore",
 	"block.moores.tin_ore": "Cassiterite",
@@ -46,6 +49,10 @@
 	"block.moores.tin_block": "Block of Tin",
 	"block.moores.bronze_block": "Block of Bronze",
 	"block.moores.blazing_blackstone": "Blazing Blackstone",
+	"block.moores.aether_block": "Crystalized Stone",
+	"block.moores.yttrium_ore": "Yttrium Ore",
+	
+	"biome.aether_mountains": "Aether Mountains",
 	
 	"itemGroup.ingots": "Ore addons Materials and Ingots",
 	"itemGroup.ores": "Ore addons Ores",
@@ -53,5 +60,11 @@
 	
 	"tooltip.moores.blazing_blackstone": "\u00A74\u00A7lBeware! \u00A7e\u00A7oExtremely hot mineral.",
 	"tooltip.moores.magmatite_armor_1": "\u00A77Full set bonus:",
-	"tooltip.moores.magmatite_armor_2": "\u00A76+Fire Resistance"
+	"tooltip.moores.magmatite_armor_2": "\u00A76+Fire Resistance",
+	"tooltip.moores.aether_boots": "\u00A77\u00A7oAnd thus, Jesus was born",
+	"tooltip.moores.yttrium_pickaxe": "Placeholder texture",
+	
+	"attribute.name.generic.float": "Floats on water",
+	"attribute.name.generic.slow_falling": "\u00A7eSlow falling",
+	"attribute.name.generic.jump_boost": "\u00A7aJump Boost"
 }

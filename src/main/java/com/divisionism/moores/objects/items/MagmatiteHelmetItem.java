@@ -26,13 +26,13 @@ public class MagmatiteHelmetItem extends ArmorItem {
 	}
 	
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("tooltip.moores.magmatite_armor_1"));
 		tooltip.add(new TranslationTextComponent("tooltip.moores.magmatite_armor_2"));
 	}
 	
 	@Override
-	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+	public void onCraftedBy(ItemStack stack, World worldIn, PlayerEntity playerIn) {
 		this.initialDamage = this.getDamage(stack);
 	}
 	
@@ -46,11 +46,11 @@ public class MagmatiteHelmetItem extends ArmorItem {
 		PlayerEntity player = (PlayerEntity) entityIn;
 		if (this.getDamage(stack) == this.getMaxDamage(stack) - 1) {
 			ItemStack helmet = new ItemStack(ModItems.STEEL_HELMET.get());
-			helmet.setDamage(initialDamage);
-			player.inventory.setInventorySlotContents(39, helmet);
-			worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1.0f,
+			helmet.setDamageValue(initialDamage);
+			player.inventory.setItem(39, helmet);
+			worldIn.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundCategory.PLAYERS, 1.0f,
 					1.0f);
-			player.inventory.addItemStackToInventory(new ItemStack(ModItems.DEPLETED_MAGMATITE.get()));
+			player.inventory.add(new ItemStack(ModItems.DEPLETED_MAGMATITE.get()));
 		}
 	}
 }

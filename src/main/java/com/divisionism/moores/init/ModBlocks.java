@@ -7,6 +7,7 @@ import com.divisionism.moores.objects.blocks.CrystalMef;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
+import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -20,25 +21,31 @@ public class ModBlocks {
 
 	// Register blocks
 	public static final RegistryObject<Block> CRYSTAL_MEF = BLOCKS.register("crystal_mef",
-			() -> new CrystalMef(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)
-					.harvestLevel(4).jumpFactor(1f).slipperiness(0.5f).variableOpacity()));
+			() -> new CrystalMef(AbstractBlock.Properties.of(Material.STONE).strength(100f, 100f).harvestLevel(4)
+					.jumpFactor(1f).friction(0.5f).dynamicShape()));
 	public static final RegistryObject<Block> YES_BLOCK = BLOCKS.register("yes_block",
-			() -> new Block(AbstractBlock.Properties.create(Material.ROCK).hardnessAndResistance(100f, 100f)
-					.harvestLevel(4).jumpFactor(1f).slipperiness(0.5f).variableOpacity()));
+			() -> new Block(AbstractBlock.Properties.of(Material.STONE).strength(100f, 100f).harvestLevel(4)
+					.jumpFactor(1f).friction(0.5f).dynamicShape()));
 
 	public static final RegistryObject<Block> COPPER_ORE = BLOCKS.register("copper_ore",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_ORE)));
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_ORE)));
 	public static final RegistryObject<Block> TIN_ORE = BLOCKS.register("tin_ore",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.GOLD_ORE)));
-	public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
-	public static final RegistryObject<Block> COPPER_BLOCK = BLOCKS.register("copper_block",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
-	public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
-	public static final RegistryObject<Block> BRONZE_BLOCK = BLOCKS.register("bronze_block",
-			() -> new Block(AbstractBlock.Properties.from(Blocks.IRON_BLOCK)));
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.GOLD_ORE)));
 	public static final RegistryObject<Block> BLAZING_BLACKSTONE = BLOCKS.register("blazing_blackstone",
-			() -> new BlazingBlackstone(AbstractBlock.Properties.create(Material.ORGANIC).harvestTool(ToolType.PICKAXE)
-					.hardnessAndResistance(20f).setLightLevel((state) -> {return 10;})));
+			() -> new BlazingBlackstone(AbstractBlock.Properties.of(Material.STONE).harvestTool(ToolType.PICKAXE)
+					.strength(20f).lightLevel((state) -> {
+						return 10;
+					})));
+	public static final RegistryObject<Block> YTTRIUM_ORE = BLOCKS.register("yttrium_ore",
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.NETHER_QUARTZ_ORE)));
+	public static final RegistryObject<Block> AETHER_CRYSTAL_BLOCK = BLOCKS.register("aether_block", () -> new Block(
+			AbstractBlock.Properties.of(Material.STONE).sound(SoundType.NETHERRACK).harvestLevel(3).strength(50, 50)));
+	public static final RegistryObject<Block> STEEL_BLOCK = BLOCKS.register("steel_block",
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_BLOCK)));
+	public static final RegistryObject<Block> COPPER_BLOCK = BLOCKS.register("copper_block",
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_BLOCK)));
+	public static final RegistryObject<Block> TIN_BLOCK = BLOCKS.register("tin_block",
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_BLOCK)));
+	public static final RegistryObject<Block> BRONZE_BLOCK = BLOCKS.register("bronze_block",
+			() -> new Block(AbstractBlock.Properties.copy(Blocks.IRON_BLOCK)));
 }

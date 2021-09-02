@@ -3,7 +3,7 @@ package com.divisionism.moores.utils;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
+import net.minecraft.util.text.StringTextComponent;
 
 public class ModDamageSource extends DamageSource {
 
@@ -12,27 +12,7 @@ public class ModDamageSource extends DamageSource {
 	}
 	
 	@Override
-	public ITextComponent getDeathMessage(LivingEntity entityLivingBaseIn) {
-		return new TranslationTextComponent("moores.death_message.baba_booey");
-	}
-	
-	@Override
-	public boolean isDamageAbsolute() {
-		return true;
-	}
-	
-	@Override
-	public boolean isMagicDamage() {
-		return true;
-	}
-	
-	@Override
-	public boolean isUnblockable() {
-		return true;
-	}
-	
-	@Override
-	public DamageSource setMagicDamage() {
-		return this;
+	public ITextComponent getLocalizedDeathMessage(LivingEntity p_151519_1_) {
+		return new StringTextComponent("death_message.moores.baba_booey");
 	}
 }

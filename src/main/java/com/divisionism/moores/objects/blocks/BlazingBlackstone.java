@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import com.divisionism.moores.init.ModTileEntities;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -15,6 +17,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.fluid.Fluids;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particles.ParticleTypes;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -33,40 +36,52 @@ public class BlazingBlackstone extends Block {
 	}
 
 	@Override
-	public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
+	public boolean hasTileEntity(BlockState state) {
+		return true;
+	}
+	
+	@Override
+	public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+		return ModTileEntities.BLAZING_BLACKSTONE.get().create();
+	}
+	
+	@Override
+	public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
 
-		if (!worldIn.getDimensionType().isUltrawarm()) {
+		if (!(placer instanceof PlayerEntity)) return;
+		
+		if (!worldIn.dimensionType().ultraWarm()) {
 			for (int i = 0; i < 5; i++) {
 				worldIn.addParticle(ParticleTypes.LARGE_SMOKE, pos.getX() + random.nextFloat(), pos.getY() + 1,
 						pos.getZ() + random.nextFloat(), 0f, 0.1f, 0f);
 			}
-			worldIn.playSound((PlayerEntity) placer, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f,
+			worldIn.playSound((PlayerEntity) placer, pos, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f,
 					1f);
 		}
 
-		if (getSurroundingBlocks(worldIn, pos).contains(Fluids.WATER.getDefaultState().getBlockState().getBlock())
+		if (getSurroundingBlocks(worldIn, pos).contains(Fluids.WATER.defaultFluidState().createLegacyBlock().getBlock())
 				|| getSurroundingBlocks(worldIn, pos)
-						.contains(Fluids.FLOWING_WATER.getDefaultState().getBlockState().getBlock())) {
+						.contains(Fluids.FLOWING_WATER.defaultFluidState().createLegacyBlock().getBlock())) {
 			worldIn.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, pos.getX() + random.nextFloat(), pos.getY() + 1,
 					pos.getZ() + random.nextFloat(), 0f, 0.1f, 0f);
-			worldIn.playSound((PlayerEntity) placer, pos, SoundEvents.BLOCK_FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f,
+			worldIn.playSound((PlayerEntity) placer, pos, SoundEvents.FIRE_EXTINGUISH, SoundCategory.BLOCKS, 1f,
 					1f);
-			worldIn.setBlockState(pos, Blocks.BLACKSTONE.getDefaultState());
+			worldIn.setBlock(pos, Blocks.BLACKSTONE.defaultBlockState(), 0);
 
 		}
-		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		super.setPlacedBy(worldIn, pos, state, placer, stack);
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip,
+	public void appendHoverText(ItemStack stack, IBlockReader worldIn, List<ITextComponent> tooltip,
 			ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("tooltip.moores.blazing_blackstone"));
 	}
 	
 	@Override
-	public void onEntityWalk(World worldIn, BlockPos pos, Entity entityIn) {
+	public void stepOn(World worldIn, BlockPos pos, Entity entityIn) {
 		if (entityIn instanceof LivingEntity) {
-			((LivingEntity) entityIn).setFire(60);
+			((LivingEntity) entityIn).setSecondsOnFire(60);;
 		}
 	}
 	
@@ -84,7 +99,7 @@ public class BlazingBlackstone extends Block {
 	}
 
 	@Override
-	public boolean ticksRandomly(BlockState state) {
+	public boolean isRandomlyTicking(BlockState state) {
 		return true;
 	}
 
@@ -92,16 +107,16 @@ public class BlazingBlackstone extends Block {
 	public void randomTick(BlockState state, ServerWorld worldIn, BlockPos pos, Random random) {
 		if (getSurroundingBlocks(worldIn, pos).contains(Blocks.AIR)) {
 			for (int i = 0; i < 50; i++) {
-				worldIn.spawnParticle(ParticleTypes.SMOKE, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f,
+				worldIn.sendParticles(ParticleTypes.SMOKE, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f,
 						random.nextInt(5), 0.1f, 0, 0.1f, 0.1f);
-				worldIn.spawnParticle(ParticleTypes.FLAME, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f,
+				worldIn.sendParticles(ParticleTypes.FLAME, pos.getX() + 0.5f, pos.getY() + 0.5f, pos.getZ() + 0.5f,
 						random.nextInt(5), 0.1f, 0, 0.1f, 0.1f);
-				worldIn.spawnParticle(ParticleTypes.LARGE_SMOKE, pos.getX() + 0.5f, pos.getY() + 0.5f,
+				worldIn.sendParticles(ParticleTypes.LARGE_SMOKE, pos.getX() + 0.5f, pos.getY() + 0.5f,
 						pos.getZ() + 0.5f, 1, 0.1f, 0, 0.1f, 0.1f);
 			}
 		}
 	}
-
+	
 	private ArrayList<Block> getSurroundingBlocks(World world, BlockPos pos) {
 		ArrayList<Block> surroundingBlocks = new ArrayList<>();
 		for (int x = -1; x < 2; x++) {

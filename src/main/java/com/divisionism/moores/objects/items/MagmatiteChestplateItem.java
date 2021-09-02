@@ -31,13 +31,13 @@ public class MagmatiteChestplateItem extends ArmorItem {
 	}
 
 	@Override
-	public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+	public void appendHoverText(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
 		tooltip.add(new TranslationTextComponent("tooltip.moores.magmatite_armor_1"));
 		tooltip.add(new TranslationTextComponent("tooltip.moores.magmatite_armor_2"));
 	}
 
 	@Override
-	public void onCreated(ItemStack stack, World worldIn, PlayerEntity playerIn) {
+	public void onCraftedBy(ItemStack stack, World worldIn, PlayerEntity playerIn) {
 		this.initialDamage = this.getDamage(stack);
 	}
 	
@@ -51,18 +51,18 @@ public class MagmatiteChestplateItem extends ArmorItem {
 		PlayerEntity player = (PlayerEntity) entityIn;
 		if (this.getDamage(stack) == this.getMaxDamage(stack) - 1) {
 			ItemStack chestplate = new ItemStack(ModItems.STEEL_CHESTPLATE.get());
-			chestplate.setDamage(initialDamage);
-			player.inventory.setInventorySlotContents(38, chestplate);
-			worldIn.playSound(player, player.getPosition(), SoundEvents.ENTITY_ITEM_BREAK, SoundCategory.PLAYERS, 1.0f,
+			chestplate.setDamageValue(initialDamage);
+			player.inventory.setItem(38, chestplate);
+			worldIn.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundCategory.PLAYERS, 1.0f,
 					1.0f);
 			//player.inventory.add(0, new ItemStack(ModItems.DEPLETED_MAGMATITE.get()));
-			player.inventory.addItemStackToInventory(new ItemStack(ModItems.DEPLETED_MAGMATITE.get()));
+			player.inventory.add(new ItemStack(ModItems.DEPLETED_MAGMATITE.get()));
 		}
 		if (this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_CHESTPLATE.get())
 				&& this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_HELMET.get())
 				&& this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_LEGGINGS.get())
 				&& this.getArmorWearing(player.inventory, itemSlot).contains(ModItems.MAGMATITE_BOOTS.get())) {
-			player.addPotionEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 10, 0, true, false));
+			player.addEffect(new EffectInstance(Effects.FIRE_RESISTANCE, 10, 0, true, false));
 		}
 	}
 
@@ -70,7 +70,7 @@ public class MagmatiteChestplateItem extends ArmorItem {
 		ArrayList<Item> armor = new ArrayList<>();
 		for (int i = -2; i < 2; i++) {
 			try {
-				armor.add(inv.armorItemInSlot(armorSlot + i).getItem());
+				armor.add(inv.getArmor(armorSlot + i).getItem());
 			} catch (ArrayIndexOutOfBoundsException e) {
 				continue;
 			}

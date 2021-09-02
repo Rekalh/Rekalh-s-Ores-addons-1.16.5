@@ -10,6 +10,9 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.stats.Stats;
+import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvents;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.api.distmarker.Dist;
@@ -27,30 +30,46 @@ public class ForgeClientEventSubscriber {
 
 	@SubscribeEvent
 	public static void onPlayerJoin(PlayerLoggedInEvent event) {
-		PlayerEntity player = event.getPlayer(); 
-		if (player.getUniqueID().equals(REKALH))
-			player.addItemStackToInventory(new ItemStack(ModItems.MAGMATITE.get(), 64));
-		else if (player.getUniqueID().equals(NICKMANEA)) {
+		PlayerEntity player = event.getPlayer();
+		if (player.getUUID().equals(REKALH))
+			player.addItem(new ItemStack(ModItems.MAGMATITE.get(), 64));
+		else if (player.getUUID().equals(NICKMANEA)) {
 			player.sendMessage(new StringTextComponent(TextFormatting.YELLOW + "Welcome NickManEA!"), NICKMANEA);
 			ItemStack stack = new ItemStack(Items.BOOK);
-			stack.addEnchantment(Enchantments.UNBREAKING, 10);
-			stack.setDisplayName(new StringTextComponent(TextFormatting.DARK_RED + "Tataros"));
-			player.addItemStackToInventory(stack);
+			stack.enchant(Enchantments.UNBREAKING, 10);
+			stack.setHoverName(new StringTextComponent(TextFormatting.DARK_RED + "Tataros"));
+			player.addItem(stack);
 		}
 	}
 
 	// Float when wearing aether boots
+	static double damage = 0;
 	@SubscribeEvent
 	public static void playerTickEvent(PlayerTickEvent event) {
 		PlayerEntity player = event.player;
 		double amplifier = 1d;
-		if (player.getItemStackFromSlot(EquipmentSlotType.FEET) != null) {
-			if (player.getItemStackFromSlot(EquipmentSlotType.FEET)
-					.isItemEqual(new ItemStack(ModItems.AETHER_BOOTS.get()))) {
-				if (player.world.getFluidState(player.getPosition().add(0, -0.06, 0)).isSource()
-						|| player.world.getFluidState(player.getPosition()).isSource()) {
-					player.setMotion(player.getMotion().x * amplifier, player.getMotion().y + 0.02,
-							player.getMotion().z * amplifier);
+		
+		damage += 0.001;
+		
+		if (player.getItemBySlot(EquipmentSlotType.FEET) != null) {
+			if (player.getItemBySlot(EquipmentSlotType.FEET).sameItem(new ItemStack(ModItems.AETHER_BOOTS.get()))) {
+				ItemStack item = player.getItemBySlot(EquipmentSlotType.FEET);
+				
+				if (player.level.getFluidState(player.blockPosition().offset(0, -0.06, 0)).isSource()
+						|| player.level.getFluidState(player.blockPosition()).isSource()) {
+					player.setDeltaMovement(player.getDeltaMovement().x * amplifier, player.getDeltaMovement().y + 0.02,
+							player.getDeltaMovement().z * amplifier);
+
+					if (!player.isCreative()) {
+						item.hurtAndBreak((int)Math.floor(damage), player, (plr) -> {
+							if (!plr.level.isClientSide())
+								plr.level.playSound(null, plr.blockPosition(), SoundEvents.ITEM_BREAK, SoundCategory.NEUTRAL, 1, 1);
+							plr.awardStat(Stats.ITEM_BROKEN.get(item.getItem()));
+							item.shrink(1);
+						});
+					}
+					
+					if (damage >= 1.001) damage = 0;
 				}
 			}
 		}

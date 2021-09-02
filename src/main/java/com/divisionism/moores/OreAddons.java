@@ -4,15 +4,17 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.divisionism.moores.creativetabs.ModCreativeTabs;
+import com.divisionism.moores.init.ModAttributes;
 import com.divisionism.moores.init.ModBiomes;
 import com.divisionism.moores.init.ModBlocks;
 import com.divisionism.moores.init.ModItems;
+import com.divisionism.moores.init.ModSurfaceBuilders;
+import com.divisionism.moores.init.ModTileEntities;
 import com.divisionism.moores.world.gen.ModOreGeneration;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 
@@ -25,12 +27,14 @@ public class OreAddons {
     public OreAddons() {
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModTileEntities.TILE_ENTITIES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModAttributes.ATTRIBUTES.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModSurfaceBuilders.SURFACE_BUILDERS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBiomes.BIOMES.register(FMLJavaModLoadingContext.get().getModEventBus());
-        ModBiomes.SURFACE_BUILDERS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        ModBiomes.registerBiomes();
         
         new ModCreativeTabs();
         
@@ -39,6 +43,4 @@ public class OreAddons {
     }
 
     private void setup(final FMLCommonSetupEvent event) {}
-
-    private void doClientStuff(final FMLClientSetupEvent event) {}
 }

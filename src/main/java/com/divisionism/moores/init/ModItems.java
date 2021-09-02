@@ -11,6 +11,7 @@ import com.divisionism.moores.objects.items.MagmatiteBootsItem;
 import com.divisionism.moores.objects.items.MagmatiteChestplateItem;
 import com.divisionism.moores.objects.items.MagmatiteHelmetItem;
 import com.divisionism.moores.objects.items.MagmatiteLeggingsItem;
+import com.divisionism.moores.objects.items.YttriumPickaxe;
 
 import net.minecraft.inventory.EquipmentSlotType;
 import net.minecraft.item.ArmorItem;
@@ -32,104 +33,108 @@ public class ModItems {
 
 	// Register items
 	public static final RegistryObject<Item> STEEL_INGOT = ITEMS.register("steel_ingot",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> COPPER_INGOT = ITEMS.register("copper_ingot",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> TIN_INGOT = ITEMS.register("tin_ingot",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> BRONZE_INGOT = ITEMS.register("bronze_ingot",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> COAL_POWDER = ITEMS.register("coal_powder",
-			() -> new CoalPowderItem(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> STEEL_DUST = ITEMS.register("steel_dust",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> STEEL_POWDER = ITEMS.register("steel_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> COPPER_POWDER = ITEMS.register("copper_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> TIN_POWDER = ITEMS.register("tin_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> BRONZE_DUST = ITEMS.register("bronze_dust",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
-	public static final RegistryObject<Item> BRONZE_POWDER = ITEMS.register("bronze_powder",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
 	public static final RegistryObject<Item> MAGMATITE = ITEMS.register("magmatite",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
-	public static final RegistryObject<Item> MAGMATITE_FRAGMENT = ITEMS.register("magmatite_fragment",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
-	public static final RegistryObject<Item> DEPLETED_MAGMATITE = ITEMS.register("depleted_magmatite",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS).isImmuneToFire()));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS).fireResistant()));
 	public static final RegistryObject<Item> AETHER_CRYSTAL = ITEMS.register("aether_crystal",
-			() -> new Item(new Item.Properties().group(ModCreativeTabs.INGOTS)));
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> IRON_POWDER = ITEMS.register("iron_powder",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> COAL_POWDER = ITEMS.register("coal_powder",
+			() -> new CoalPowderItem(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> TIN_POWDER = ITEMS.register("tin_powder",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> COPPER_POWDER = ITEMS.register("copper_powder",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> BRONZE_POWDER = ITEMS.register("bronze_powder",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> STEEL_POWDER = ITEMS.register("steel_powder",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> STEEL_DUST = ITEMS.register("steel_dust",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> BRONZE_DUST = ITEMS.register("bronze_dust",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
+	public static final RegistryObject<Item> MAGMATITE_FRAGMENT = ITEMS.register("magmatite_fragment",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS).fireResistant()));
+	public static final RegistryObject<Item> DEPLETED_MAGMATITE = ITEMS.register("depleted_magmatite",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS).fireResistant()));
+	public static final RegistryObject<Item> AETHER_SHARD = ITEMS.register("aether_shard",
+			() -> new Item(new Item.Properties().tab(ModCreativeTabs.INGOTS)));
 
 	public static final RegistryObject<SwordItem> THE_BIBLE = ITEMS.register("the_bible",
 			() -> new SwordItem(ModItemTiers.THE_BIBLE, 32767, 5,
-					new Item.Properties().isImmuneToFire().maxStackSize(1).rarity(Rarity.EPIC)));
+					new Item.Properties().fireResistant().stacksTo(1).rarity(Rarity.EPIC)));
 
 	// Tools
 	public static final RegistryObject<PickaxeItem> STEEL_PICKAXE = ITEMS.register("steel_pickaxe",
-			() -> new PickaxeItem(ModItemTiers.STEEL, 1, -2.8f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new PickaxeItem(ModItemTiers.STEEL, 1, -2.8f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<SwordItem> STEEL_SWORD = ITEMS.register("steel_sword",
-			() -> new SwordItem(ModItemTiers.STEEL, 8, -2.4f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new SwordItem(ModItemTiers.STEEL, 8, -2.4f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<AxeItem> STEEL_AXE = ITEMS.register("steel_axe",
-			() -> new AxeItem(ModItemTiers.STEEL, 10, -3f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new AxeItem(ModItemTiers.STEEL, 10, -3f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ShovelItem> STEEL_SHOVEL = ITEMS.register("steel_shovel",
-			() -> new ShovelItem(ModItemTiers.STEEL, 4, -3f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new ShovelItem(ModItemTiers.STEEL, 4, -3f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<HoeItem> STEEL_HOE = ITEMS.register("steel_hoe",
-			() -> new HoeItem(ModItemTiers.STEEL, 0, 0, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new HoeItem(ModItemTiers.STEEL, 0, 0, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<PickaxeItem> BRONZE_PICKAXE = ITEMS.register("bronze_pickaxe",
-			() -> new PickaxeItem(ModItemTiers.BRONZE, 2, -2.8f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new PickaxeItem(ModItemTiers.BRONZE, 2, -2.8f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<SwordItem> BRONZE_SWORD = ITEMS.register("bronze_sword",
-			() -> new SwordItem(ModItemTiers.BRONZE, 9, -2.4f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new SwordItem(ModItemTiers.BRONZE, 9, -2.4f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<AxeItem> BRONZE_AXE = ITEMS.register("bronze_axe",
-			() -> new AxeItem(ModItemTiers.BRONZE, 12, -3f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new AxeItem(ModItemTiers.BRONZE, 12, -3f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ShovelItem> BRONZE_SHOVEL = ITEMS.register("bronze_shovel",
-			() -> new ShovelItem(ModItemTiers.BRONZE, 5, -3f, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new ShovelItem(ModItemTiers.BRONZE, 5, -3f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<HoeItem> BRONZE_HOE = ITEMS.register("bronze_hoe",
-			() -> new HoeItem(ModItemTiers.BRONZE, 0, 0, new Item.Properties().group(ModCreativeTabs.TOOLS)));
+			() -> new HoeItem(ModItemTiers.BRONZE, 0, 0, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
+	public static final RegistryObject<PickaxeItem> YTTRIUM_PICKAXE = ITEMS.register("yttrium_pickaxe",
+			() -> new YttriumPickaxe(ModItemTiers.YTTRIUM, 2, -2.8f, new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 
 	// Armor
 	public static final RegistryObject<ArmorItem> STEEL_HELMET = ITEMS.register("steel_helmet",
 			() -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlotType.HEAD,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> STEEL_CHESTPLATE = ITEMS.register("steel_chestplate",
 			() -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlotType.CHEST,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> STEEL_LEGGINGS = ITEMS.register("steel_leggings",
 			() -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlotType.LEGS,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> STEEL_BOOTS = ITEMS.register("steel_boots",
 			() -> new ArmorItem(ModArmorMaterials.STEEL, EquipmentSlotType.FEET,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> BRONZE_HELMET = ITEMS.register("bronze_helmet",
 			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.HEAD,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> BRONZE_CHESTPLATE = ITEMS.register("bronze_chestplate",
 			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.CHEST,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> BRONZE_LEGGINGS = ITEMS.register("bronze_leggings",
 			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.LEGS,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<ArmorItem> BRONZE_BOOTS = ITEMS.register("bronze_boots",
 			() -> new ArmorItem(ModArmorMaterials.BRONZE, EquipmentSlotType.FEET,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 	public static final RegistryObject<MagmatiteHelmetItem> MAGMATITE_HELMET = ITEMS.register("magmatite_helmet",
 			() -> new MagmatiteHelmetItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.HEAD,
-					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS).fireResistant()));
 	public static final RegistryObject<MagmatiteChestplateItem> MAGMATITE_CHESTPLATE = ITEMS
 			.register("magmatite_chestplate", () -> new MagmatiteChestplateItem(ModArmorMaterials.MAGMATITE,
-					EquipmentSlotType.CHEST, new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+					EquipmentSlotType.CHEST, new Item.Properties().tab(ModCreativeTabs.TOOLS).fireResistant()));
 	public static final RegistryObject<MagmatiteLeggingsItem> MAGMATITE_LEGGINGS = ITEMS.register("magmatite_leggings",
 			() -> new MagmatiteLeggingsItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.LEGS,
-					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS).fireResistant()));
 	public static final RegistryObject<MagmatiteBootsItem> MAGMATITE_BOOTS = ITEMS.register("magmatite_boots",
 			() -> new MagmatiteBootsItem(ModArmorMaterials.MAGMATITE, EquipmentSlotType.FEET,
-					new Item.Properties().group(ModCreativeTabs.TOOLS).isImmuneToFire()));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS).fireResistant()));
 	public static final RegistryObject<AetherBootsItem> AETHER_BOOTS = ITEMS.register("aether_boots",
 			() -> new AetherBootsItem(ModArmorMaterials.AETHER, EquipmentSlotType.FEET,
-					new Item.Properties().group(ModCreativeTabs.TOOLS)));
+					new Item.Properties().tab(ModCreativeTabs.TOOLS)));
 
 	// Register block-items
 	public static final RegistryObject<BlockItem> CRYSTAL_MEF_ITEM = ITEMS.register("crystal_mef",
@@ -138,18 +143,22 @@ public class ModItems {
 			() -> new BlockItem(ModBlocks.YES_BLOCK.get(), new Item.Properties().rarity(Rarity.EPIC)));
 
 	public static final RegistryObject<BlockItem> COPPER_ORE_ITEM = ITEMS.register("copper_ore",
-			() -> new BlockItem(ModBlocks.COPPER_ORE.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
+			() -> new BlockItem(ModBlocks.COPPER_ORE.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
 	public static final RegistryObject<BlockItem> TIN_ORE_ITEM = ITEMS.register("tin_ore",
-			() -> new BlockItem(ModBlocks.TIN_ORE.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
-	public static final RegistryObject<BlockItem> STEEL_BLOCK_ITEM = ITEMS.register("steel_block",
-			() -> new BlockItem(ModBlocks.STEEL_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
-	public static final RegistryObject<BlockItem> COPPER_BLOCK_ITEM = ITEMS.register("copper_block",
-			() -> new BlockItem(ModBlocks.COPPER_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
-	public static final RegistryObject<BlockItem> TIN_BLOCK_ITEM = ITEMS.register("tin_block",
-			() -> new BlockItem(ModBlocks.TIN_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
-	public static final RegistryObject<BlockItem> BRONZE_BLOCK_ITEM = ITEMS.register("bronze_block",
-			() -> new BlockItem(ModBlocks.BRONZE_BLOCK.get(), new Item.Properties().group(ModCreativeTabs.ORES)));
+			() -> new BlockItem(ModBlocks.TIN_ORE.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
 	public static final RegistryObject<BlockItem> BLAZING_BLACKSTONE_ITEM = ITEMS.register("blazing_blackstone",
 			() -> new BlazingBlackstoneBlockItem(ModBlocks.BLAZING_BLACKSTONE.get(),
-					new Item.Properties().group(ModCreativeTabs.ORES)));
+					new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> AETHER_CRYSTAL_BLOCK_ITEM = ITEMS.register("aether_block",
+			() -> new BlockItem(ModBlocks.AETHER_CRYSTAL_BLOCK.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> YTTRIUM_ORE_ITEM = ITEMS.register("yttrium_ore",
+			() -> new BlockItem(ModBlocks.YTTRIUM_ORE.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> STEEL_BLOCK_ITEM = ITEMS.register("steel_block",
+			() -> new BlockItem(ModBlocks.STEEL_BLOCK.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> COPPER_BLOCK_ITEM = ITEMS.register("copper_block",
+			() -> new BlockItem(ModBlocks.COPPER_BLOCK.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> TIN_BLOCK_ITEM = ITEMS.register("tin_block",
+			() -> new BlockItem(ModBlocks.TIN_BLOCK.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
+	public static final RegistryObject<BlockItem> BRONZE_BLOCK_ITEM = ITEMS.register("bronze_block",
+			() -> new BlockItem(ModBlocks.BRONZE_BLOCK.get(), new Item.Properties().tab(ModCreativeTabs.ORES)));
 }
